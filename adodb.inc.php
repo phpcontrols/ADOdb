@@ -3899,6 +3899,14 @@ class ADORecordSet implements IteratorAggregate {
 	 */
 	protected $fieldObjectsCache;
 
+	/*
+	* Indicates if the fieldObjects have been retrieved. Prevents
+	* multiple attempts even if the feature is unavailable
+	* @var bool 
+	* @see init()
+	*/
+	protected $fieldObjectsRetrieved;
+
 	/**
 	 * Constructor
 	 *
@@ -3948,8 +3956,18 @@ class ADORecordSet implements IteratorAggregate {
 
 	/**
 	 * Recordset initialization stub
+	 * 
+	 * @return voide
 	 */
-	protected function _initRS() {}
+	protected function _initrs() {}
+
+	/**
+	 * Abstract Stub to set column information in the Recordset field objects cache
+	 *
+	 * @param int		$fieldOffset
+	 * @return object 	containing field information
+	 */
+	protected function setFieldObjectsCache($fieldOffset = -1) {}
 
 	/**
 	 * Row fetch stub
